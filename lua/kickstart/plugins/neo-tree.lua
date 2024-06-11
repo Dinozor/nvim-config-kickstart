@@ -12,6 +12,21 @@ return {
   cmd = 'Neotree',
   keys = {
     { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    {
+      '<leader>be',
+      function()
+        require('neo-tree.command').execute { source = 'buffers', toggle = true }
+      end,
+      desc = 'Buffer explorer',
+    },
+    -- {
+    --   '<c-b>',
+    --   function()
+    --     local actions = require 'telescope.actions'
+    --     return actions.delete_buffer + actions.move_to_top
+    --   end,
+    --   desc = 'Delete buffer',
+    -- },
   },
   opts = {
     filesystem = {
