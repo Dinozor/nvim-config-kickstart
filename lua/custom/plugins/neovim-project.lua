@@ -18,6 +18,6 @@ return {
       { 'Shatur/neovim-session-manager' },
     },
     lazy = false,
-    priority = 1000,
+    priority = 100,
   },
 }

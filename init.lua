@@ -587,6 +587,23 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        phpactor = {
+          -- capabilities = capabilities,
+          settings = {
+            phpactor = {
+              enable = true,
+              phpstan = {
+                enable = true,
+              },
+              completion = {
+                enable = true,
+              },
+              index = {
+                stubs = 'vendor/php-stubs',
+              },
+            },
+          },
+        },
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
