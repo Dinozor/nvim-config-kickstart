@@ -1,0 +1,54 @@
+return {
+  -- 'axkirillov/hbac.nvim',
+  -- priority = 1,
+  -- lazy = false,
+  -- config = true,
+  -- config = function()
+  --   require('hbac').setup {
+  --     autoclose = true,
+  --     threshold = 4,
+  --     close_command = function(bufnr)
+  --       vim.api.nvim_buf_delete(bufnr, {})
+  --     end,
+  --     close_buffers_with_windows = false,
+  --   }
+  -- end,
+  -- opts = {
+  --   event = 'BufReadPre',
+  --   autoclose = true,
+  --   threshold = 4,
+  --   close_command = function(bufnr)
+  --     vim.api.nvim_buf_delete(bufnr, {})
+  --   end,
+  --   close_buffers_with_windows = false,
+  -- },
+  -- config = function()
+  --   local actions = require 'hbac.telescope.actions'
+  --   require('hbac').setup {
+  --     autoclose = true,
+  --     threshold = 4,
+  --     close_command = function(bufnr)
+  --       vim.api.nvim_buf_delete(bufnr, {})
+  --     end,
+  --     close_buffers_with_windows = false,
+  -- telescope = {
+  --   sort_lastused = true,
+  --   selection_strategy = 'row',
+  --   use_default_mappings = true,
+  --   mappings = {
+  --     i = {
+  --       ['<M-c>'] = require('hbac.telescope.actions').close_unpinned,
+  --       ['<M-x>'] = require('hbac.telescope.actions').delete_buffer,
+  --       ['<M-a>'] = require('hbac.telescope.actions').pin_all,
+  --       ['<M-u>'] = require('hbac.telescope.actions').unpin_all,
+  --       ['<M-y>'] = require('hbac.telescope.actions').toggle_pin,
+  --     },
+  --   },
+  --   pin_icons = {
+  --     pinned = { '󰐃 ', hl = 'DiagnosticOk' },
+  --     unpinned = { '󰤱 ', hl = 'DiagnosticError' },
+  --   },
+  -- },
+  --   }
+  -- end,
+}

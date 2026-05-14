@@ -184,6 +184,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>', {})
+
+vim.keymap.set('n', '<leader>sp', ':Telescope neovim-project discover<CR>', { desc = 'Discover [P]rojects' })
+
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -196,8 +200,9 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set('n', '<C-j>', ':cnext<CR>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', ':cprev<CR>', { desc = 'Move focus to the upper window' })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 vim.keymap.set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
@@ -280,6 +285,14 @@ require('lazy').setup({
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
+      },
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        delay = 0,
+        ignore_whitespace = false,
+        virt_text_priority = 100,
       },
     },
   },
@@ -683,6 +696,23 @@ require('lazy').setup({
       local servers = {
         gdtoolkit = {},
         vala_ls = {},
+        phpactor = {
+          -- capabilities = capabilities,
+          settings = {
+            phpactor = {
+              enable = true,
+              phpstan = {
+                enable = true,
+              },
+              completion = {
+                enable = true,
+              },
+              index = {
+                stubs = 'vendor/php-stubs',
+              },
+            },
+          },
+        },
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -781,6 +811,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         gdscript = { 'gdformat' },
+        php = { 'php_cs_fixer' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
