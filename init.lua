@@ -798,6 +798,16 @@ require('lazy').setup({
           }
         end
       end,
+      formatters = {
+        php_cs_fixer = {
+          command = 'docker',
+          args = function(_, ctx)
+            local service = vim.g.php_service or 'app'
+            return { 'compose', 'exec', '-T', service, 'vendor/bin/php-cs-fixer', 'fix', '--path-mode=intersection', '--', ctx.filename }
+          end,
+          stdin = false,
+        },
+      },
       formatters_by_ft = {
         lua = { 'stylua' },
         gdscript = { 'gdformat' },
