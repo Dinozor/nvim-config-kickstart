@@ -789,7 +789,9 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        -- php is excluded because php_cs_fixer runs via docker compose exec
+        -- (too slow for a 500ms timeout) — use <leader>f to format manually.
+        local disable_filetypes = { c = true, cpp = true, php = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
