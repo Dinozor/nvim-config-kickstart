@@ -170,6 +170,12 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Automatically reload files changed outside nvim
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  command = 'checktime',
+})
+
 -- Load .nvim.lua from project root (Neovim prompts to trust the first time).
 vim.o.exrc = true
 
@@ -749,6 +755,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua',
         'markdownlint',
+        'jsonlint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
